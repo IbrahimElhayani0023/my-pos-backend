@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function(){
     Route::get('/user',fn(Request $request)=> $request->user());
+    Route::apiResource('/products', \App\Http\Controllers\ProductController::class);
+    Route::apiResource('/orders', \App\Http\Controllers\OrderController::class)->except(['update','destroy']);
+    Route::apiResource('/costumers', \App\Http\Controllers\CostumerController::class);
 });
-Route::apiResource('/products', \App\Http\Controllers\ProductController::class);
-Route::apiResource('/orders', \App\Http\Controllers\OrderController::class)->except(['update','destroy']);
-Route::apiResource('/costumers', \App\Http\Controllers\CostumerController::class);
